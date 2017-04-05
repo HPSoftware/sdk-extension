@@ -11,5 +11,13 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sdk-private-extension-src</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>sdk-private-extension-src</groupId>
+            <artifactId>sdk-src</artifactId>
+            <version>${sdk.version}</version>
+        </dependency>
+    </dependencies>
 	
 </project>

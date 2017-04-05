@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
     <version>12.53.20-SNAPSHOT</version>
 
-    <name>HPE ALM Octane REST API SDK</name>
+    <name>HPE ALM Octane REST API SDK Extensions</name>
     <description>
         Extension of ALM Octane Java REST SDK (https://github.com/HPSoftware/ALMOctaneJavaRESTSDK),
         can be used for more advanced use cases.
@@ -17,21 +17,21 @@
     <url>https://github.hpe.com/octavian-savencu/sdk-private-extension</url>
 	
     <properties>
-        <sdk.version>12.53.20-SNAPSHOT</sdk.version>
+        <sdk.version>12.53.20-EXT-SNAPSHOT</sdk.version>
         <junit.version>4.11</junit.version>
     </properties>
 	
     <dependencies>
         <dependency>
-            <groupId>com.hpe.adm.nga.sdk</groupId>
-            <artifactId>sdk-src</artifactId>
-            <version>${sdk.version}</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.hpe.adm.nga.sdk</groupId>
+            <artifactId>sdk-src</artifactId>
+            <version>${sdk.version}</version>
         </dependency>
 	</dependencies>
 	
