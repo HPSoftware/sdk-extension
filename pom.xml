@@ -5,10 +5,37 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.hpe.adm.nga.sdk</groupId>
-    <artifactId>sdk-private-extension</artifactId>
+    <artifactId>sdk-private-extension-root</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <build>
+    <version>12.53.20-SNAPSHOT</version>
+
+    <name>HPE ALM Octane REST API SDK</name>
+    <description>
+        Extension of ALM Octane Java REST SDK (https://github.com/HPSoftware/ALMOctaneJavaRESTSDK),
+        can be used for more advanced use cases.
+    </description>
+    <url>https://github.hpe.com/octavian-savencu/sdk-private-extension</url>
+	
+    <properties>
+        <sdk.version>12.53.20-SNAPSHOT</sdk.version>
+        <junit.version>4.11</junit.version>
+    </properties>
+	
+    <dependencies>
+        <dependency>
+            <groupId>com.hpe.adm.nga.sdk</groupId>
+            <artifactId>sdk-src</artifactId>
+            <version>${sdk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+	
+	 <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -20,31 +47,4 @@
             </plugin>
         </plugins>
     </build>
-    <properties>
-        <skip-integration-tests>true</skip-integration-tests>
-    </properties>
-    <dependencies>
-        <dependency>
-            <groupId>com.hpe.adm.nga.sdk</groupId>
-            <artifactId>sdk-src</artifactId>
-            <version>12.53.21-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-configuration2</artifactId>
-            <version>2.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>1.9.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-        </dependency>
-	</dependencies>
 </project>
