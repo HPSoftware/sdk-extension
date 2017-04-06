@@ -10,12 +10,12 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>sdk-private-extension-src</artifactId>
+    <artifactId>sdk-private-extension-usage-examples</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>sdk-private-extension-src</groupId>
-            <artifactId>sdk-src</artifactId>
+            <groupId>com.hpe.adm.nga.sdk</groupId>
+            <artifactId>sdk-private-extension-src</artifactId>
             <version>12.53.20-SNAPSHOT</version>
         </dependency>
     </dependencies>

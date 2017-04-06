@@ -15,7 +15,12 @@
         can be used for more advanced use cases.
     </description>
     <url>https://github.hpe.com/octavian-savencu/sdk-private-extension</url>
-	
+
+    <modules>
+        <module>sdk-src</module>
+        <module>sdk-usage-examples</module>
+    </modules>
+
     <properties>
         <sdk.version>12.53.20-EXT-SNAPSHOT</sdk.version>
         <junit.version>4.11</junit.version>
@@ -33,13 +38,14 @@
             <artifactId>sdk-src</artifactId>
             <version>${sdk.version}</version>
         </dependency>
-	</dependencies>
+    </dependencies>
 	
 	 <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
