@@ -5,7 +5,7 @@ import com.hpe.adm.nga.sdk.Util;
 import com.hpe.adm.nga.sdk.authentication.Authentication;
 import com.hpe.adm.nga.sdk.model.EntityModel;
 import com.hpe.adm.nga.sdk.model.StringFieldModel;
-import com.hpe.adm.nga.sdk.network.ExtendedOctane;
+import com.hpe.adm.nga.sdk.ExtendedOctane;
 import com.hpe.adm.nga.sdk.network.OctaneHttpClient;
 import com.hpe.adm.nga.sdk.network.OctaneHttpRequest;
 import com.hpe.adm.nga.sdk.network.OctaneHttpResponse;

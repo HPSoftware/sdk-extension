@@ -6,7 +6,7 @@ import com.hpe.adm.nga.sdk.Util;
 import com.hpe.adm.nga.sdk.authentication.Authentication;
 import com.hpe.adm.nga.sdk.authentication.SimpleUserAuthentication;
 import com.hpe.adm.nga.sdk.model.EntityModel;
-import com.hpe.adm.nga.sdk.network.ExtendedOctane;
+import com.hpe.adm.nga.sdk.ExtendedOctane;
 import com.hpe.adm.nga.sdk.network.google.CustomGoogleHttpClient;
 
 import java.util.Collection;

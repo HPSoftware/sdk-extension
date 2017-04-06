@@ -1,6 +1,6 @@
-package com.hpe.adm.nga.sdk.network;
+package com.hpe.adm.nga.sdk;
 
-import com.hpe.adm.nga.sdk.Octane;
+import com.hpe.adm.nga.sdk.network.OctaneHttpClient;
 
 /**
  * Extension of the Octane object. <br>
