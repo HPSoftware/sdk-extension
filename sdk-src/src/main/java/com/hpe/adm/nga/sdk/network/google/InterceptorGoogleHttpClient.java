@@ -1,35 +1,56 @@
 package com.hpe.adm.nga.sdk.network.google;
 
 
-import com.hpe.adm.nga.sdk.authentication.Authentication;
-import com.hpe.adm.nga.sdk.network.AbstractOctaneHttpClient;
+import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpResponse;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
 import com.hpe.adm.nga.sdk.network.OctaneHttpRequest;
 import com.hpe.adm.nga.sdk.network.OctaneHttpResponse;
+import com.hpe.adm.nga.sdk.network.RequestInterceptor;
+import com.hpe.adm.nga.sdk.network.ResponseInterceptor;
 
-/**
- * Implementation of {@link AbstractOctaneHttpClient}
- * that uses an inner {@link GoogleHttpClient}
- * Enables use of {@link com.hpe.adm.nga.sdk.network.RequestInterceptor} and {@link com.hpe.adm.nga.sdk.network.ResponseInterceptor}
- */
-public class InterceptorGoogleHttpClient extends AbstractOctaneHttpClient{
+import java.io.IOException;
+import java.net.Proxy;
 
-    private GoogleHttpClient googleHttpClient;
+public class InterceptorGoogleHttpClient extends GoogleHttpClient {
+
+    private RequestInterceptor requestInterceptor;
+    private ResponseInterceptor responseInterceptor;
 
     public InterceptorGoogleHttpClient(String urlDomain) {
-        googleHttpClient = new GoogleHttpClient(urlDomain);
+        super(urlDomain);
     }
 
-    public boolean authenticate(Authentication authentication) {
-        return googleHttpClient.authenticate(authentication);
-    }
-
-    public void signOut() {
-        googleHttpClient.signOut();
+    public void setHttpProxy(Proxy httpProxy) {
+        HttpTransport HTTP_TRANSPORT = new NetHttpTransport.Builder().setProxy(httpProxy).build();
+        requestFactory = HTTP_TRANSPORT.createRequestFactory(requestInitializer);
     }
 
     @Override
-    public OctaneHttpResponse executeOctaneHttpRequest(OctaneHttpRequest octaneHttpRequest) {
-        return googleHttpClient.execute(octaneHttpRequest);
+    protected HttpRequest convertOctaneRequestToGoogleHttpRequest(OctaneHttpRequest octaneHttpRequest) {
+        return super.convertOctaneRequestToGoogleHttpRequest(octaneHttpRequest);
+    }
+
+    @Override
+    protected OctaneHttpResponse convertHttpResponseToOctaneHttpResponse(HttpResponse httpResponse) throws IOException {
+        return super.convertHttpResponseToOctaneHttpResponse(httpResponse);
+    }
+
+    public RequestInterceptor getRequestInterceptor() {
+        return requestInterceptor;
+    }
+
+    public void setRequestInterceptor(RequestInterceptor requestInterceptor) {
+        this.requestInterceptor = requestInterceptor;
+    }
+
+    public ResponseInterceptor getResponseInterceptor() {
+        return responseInterceptor;
+    }
+
+    public void setResponseInterceptor(ResponseInterceptor responseInterceptor) {
+        this.responseInterceptor = responseInterceptor;
     }
 
 }
