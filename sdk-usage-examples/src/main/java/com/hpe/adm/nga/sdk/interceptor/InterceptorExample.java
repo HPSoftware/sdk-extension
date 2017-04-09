@@ -4,12 +4,8 @@ import com.hpe.adm.nga.sdk.Octane;
 import com.hpe.adm.nga.sdk.OctaneConnectionConstants;
 import com.hpe.adm.nga.sdk.authentication.Authentication;
 import com.hpe.adm.nga.sdk.authentication.SimpleUserAuthentication;
-import com.hpe.adm.nga.sdk.customhttpclient.DummyOctaneHttpClient;
 import com.hpe.adm.nga.sdk.model.EntityModel;
-import com.hpe.adm.nga.sdk.model.FieldModel;
 import com.hpe.adm.nga.sdk.model.StringFieldModel;
-import com.hpe.adm.nga.sdk.network.AbstractRequestInterceptor;
-import com.hpe.adm.nga.sdk.network.AbstractResponseInterceptor;
 import com.hpe.adm.nga.sdk.network.RequestInterceptor;
 import com.hpe.adm.nga.sdk.network.ResponseInterceptor;
 import com.hpe.adm.nga.sdk.network.google.InterceptorGoogleHttpClient;
@@ -21,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Map;
 
 public class InterceptorExample {
 
@@ -40,7 +36,7 @@ public class InterceptorExample {
                 Octane.Builder.OCTANE_HTTP_CLIENT_CLASS_NAME,
                 "com.hpe.adm.nga.sdk.network.google.InterceptorGoogleHttpClient");
 
-        InterceptorGoogleHttpClient.addRequestInterceptor(new AbstractRequestInterceptor() {
+        InterceptorGoogleHttpClient.addRequestInterceptor(new RequestInterceptor() {
             @Override
             public String url(String url) {
                 String newUrl = url.replace("work_items","defects");
@@ -53,11 +49,18 @@ public class InterceptorExample {
                 return content;
             }
 
+            @Override
+            public Map<String, Object> headers( Map<String, Object> headers) {
+                logger.info("Intercepting headers: (printing)");
+                headers.forEach((key, value) -> logger.info(key +": " + value));
+                return headers;
+            }
+
             //TODO: headers
         });
 
         //TODO: not working
-        InterceptorGoogleHttpClient.addResponseInterceptor(new AbstractResponseInterceptor() {
+        InterceptorGoogleHttpClient.addResponseInterceptor(new ResponseInterceptor() {
         });
 
         Octane octane =

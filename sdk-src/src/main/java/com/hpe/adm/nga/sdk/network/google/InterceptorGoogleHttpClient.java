@@ -18,7 +18,9 @@ import java.io.InputStreamReader;
 import java.net.Proxy;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InterceptorGoogleHttpClient extends GoogleHttpClient {
 
@@ -51,34 +53,36 @@ public class InterceptorGoogleHttpClient extends GoogleHttpClient {
 
     private static void applyRequestInterceptor(RequestInterceptor requestInterceptor, HttpRequest httpRequest){
 
+        //URL
         String newUrl = requestInterceptor.url(httpRequest.getUrl().toString());
         httpRequest.setUrl(new GenericUrl(newUrl));
 
+        //CONTENT
         if(httpRequest.getContent() != null && !(httpRequest.getContent() instanceof EmptyContent)){
-            if(httpRequest.getContent() instanceof JsonHttpContent){
-                JsonHttpContent jsonContent = (JsonHttpContent) httpRequest.getContent();
-                requestInterceptor.content(jsonContent.getData().toString());
-            }
             if(httpRequest.getContent() instanceof ByteArrayContent){
                 ByteArrayContent byteArrayContent = (ByteArrayContent) httpRequest.getContent();
                 try {
                     String byteArrayContentString = CharStreams.toString(new InputStreamReader(byteArrayContent.getInputStream(), StandardCharsets.UTF_8));
-                    requestInterceptor.content(byteArrayContentString);
+                    String newContent = requestInterceptor.content(byteArrayContentString);
+                    httpRequest.setContent(new ByteArrayContent(byteArrayContent.getType(), newContent.getBytes()));
                 } catch (IOException e) {
                     logger.error("Failed to call request interceptor content method, error while reading ByteArrayContent", e);
                 }
             }
-            //TODO actually change the content
         }
 
-        //TODO: headers
+        //HEADERS
+        final Map<String, Object> oldHeaders = new HashMap<>();
+        httpRequest.getHeaders().forEach( (key, value) -> oldHeaders.put(key, value));
+        final Map<String, Object> newHeaders = requestInterceptor.headers(oldHeaders);
+        newHeaders.forEach((key, value) -> httpRequest.getHeaders().set(key, value));
 
-        logger.debug("Applying requestInterceptor " + requestInterceptors.indexOf(requestInterceptor) + " of " + requestInterceptors.size());
+        logger.debug("Applying requestInterceptor " + (requestInterceptors.indexOf(requestInterceptor) + 1) + " of " + requestInterceptors.size());
     }
 
     private static void applyResponseInterceptor(ResponseInterceptor responseInterceptor, HttpResponse httpResponse){
         //TODO, implement this thing
-        logger.debug("Applying responseInterceptor " + responseInterceptors.indexOf(responseInterceptor) + " of " + responseInterceptors.size());
+        logger.debug("Applying responseInterceptor " + (responseInterceptors.indexOf(responseInterceptor) + 1) + " of " + responseInterceptors.size());
     }
 
     public static boolean addRequestInterceptor(RequestInterceptor requestInterceptor) {
