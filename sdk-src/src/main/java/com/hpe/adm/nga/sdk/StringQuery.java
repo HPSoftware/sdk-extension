@@ -1,5 +1,7 @@
 package com.hpe.adm.nga.sdk;
 
+import com.hpe.adm.nga.sdk.query.Query;
+
 /**
  * Variant of the Query object that allows you to bypass using a query builder
  * and just write the query string directly. <br>

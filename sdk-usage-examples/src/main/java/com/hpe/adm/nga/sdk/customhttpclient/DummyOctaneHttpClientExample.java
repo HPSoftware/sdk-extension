@@ -1,6 +1,7 @@
 package com.hpe.adm.nga.sdk.customhttpclient;
 
 import com.hpe.adm.nga.sdk.Octane;
+import com.hpe.adm.nga.sdk.OctaneClassFactory;
 import com.hpe.adm.nga.sdk.OctaneConnectionConstants;
 import com.hpe.adm.nga.sdk.Util;
 import com.hpe.adm.nga.sdk.authentication.Authentication;
@@ -25,7 +26,7 @@ public class DummyOctaneHttpClientExample {
         //Set custom implementation via system propery
 
         System.getProperties().setProperty(
-                Octane.Builder.OCTANE_HTTP_CLIENT_CLASS_NAME,
+                OctaneClassFactory.OCTANE_HTTP_CLIENT_CLASS_NAME,
                 "com.hpe.adm.nga.sdk.customhttpclient.DummyOctaneHttpClient");
 
         int dummyDefectCount = ThreadLocalRandom.current().nextInt(0, 101);
@@ -46,6 +47,6 @@ public class DummyOctaneHttpClientExample {
         assert defects.size() == dummyDefectCount;
 
         //Remove system property
-        System.getProperties().remove(Octane.Builder.OCTANE_HTTP_CLIENT_CLASS_NAME);
+        System.getProperties().remove(OctaneClassFactory.OCTANE_HTTP_CLIENT_CLASS_NAME);
     }
 }

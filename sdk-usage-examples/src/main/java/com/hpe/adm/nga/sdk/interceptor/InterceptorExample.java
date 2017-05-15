@@ -1,6 +1,7 @@
 package com.hpe.adm.nga.sdk.interceptor;
 
 import com.hpe.adm.nga.sdk.Octane;
+import com.hpe.adm.nga.sdk.OctaneClassFactory;
 import com.hpe.adm.nga.sdk.OctaneConnectionConstants;
 import com.hpe.adm.nga.sdk.authentication.Authentication;
 import com.hpe.adm.nga.sdk.authentication.SimpleUserAuthentication;
@@ -33,8 +34,8 @@ public class InterceptorExample {
         //Set custom implementation via system propery
 
         System.getProperties().setProperty(
-                Octane.Builder.OCTANE_HTTP_CLIENT_CLASS_NAME,
-                "com.hpe.adm.nga.sdk.network.google.InterceptorGoogleHttpClient");
+                OctaneClassFactory.OCTANE_CLASS_FACTORY_CLASS_NAME,
+                "com.hpe.adm.nga.sdk.ExtendedOctaneClassFactory");
 
         InterceptorGoogleHttpClient.addRequestInterceptor(new RequestInterceptor() {
             @Override
