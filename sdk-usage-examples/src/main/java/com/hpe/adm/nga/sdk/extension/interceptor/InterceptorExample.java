@@ -16,10 +16,10 @@
 package com.hpe.adm.nga.sdk.extension.interceptor;
 
 import com.hpe.adm.nga.sdk.Octane;
-import com.hpe.adm.nga.sdk.OctaneClassFactory;
 import com.hpe.adm.nga.sdk.authentication.Authentication;
 import com.hpe.adm.nga.sdk.authentication.SimpleUserAuthentication;
 import com.hpe.adm.nga.sdk.extension.OctaneConnectionConstants;
+import com.hpe.adm.nga.sdk.extension.OctaneExtensionUtil;
 import com.hpe.adm.nga.sdk.extension.network.RequestInterceptor;
 import com.hpe.adm.nga.sdk.extension.network.ResponseInterceptor;
 import com.hpe.adm.nga.sdk.extension.network.google.InterceptorGoogleHttpClient;
@@ -41,16 +41,13 @@ public class InterceptorExample {
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
     public static void main(String[] args){
+
+        OctaneExtensionUtil.enable();
+
         Authentication authentication
                 = new SimpleUserAuthentication(
                 OctaneConnectionConstants.username,
                 OctaneConnectionConstants.password);
-
-        //Set custom implementation via system propery
-
-        System.getProperties().setProperty(
-                OctaneClassFactory.OCTANE_CLASS_FACTORY_CLASS_NAME,
-                "ExtendedOctaneClassFactory");
 
         InterceptorGoogleHttpClient.addRequestInterceptor(new RequestInterceptor() {
             @Override
