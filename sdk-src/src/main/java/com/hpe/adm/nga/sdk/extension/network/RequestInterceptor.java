@@ -13,20 +13,16 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk;
+package com.hpe.adm.nga.sdk.extension.network;
 
-/**
- * Used to story some basic values that you can change to run the examples
- */
-public interface OctaneConnectionConstants {
+import java.util.Map;
 
-    //Server
-    String urlDomain = "";
-    Long sharedspaceId = -1L;
-    Long workspaceId = -1L;
-
-    //Auth
-    String username = "";
-    String password = "";
-
+public interface RequestInterceptor {
+    default String url(String url){
+        return url;
+    }
+    default String content(String content){ return content; }
+    default Map<String, Object> headers(Map<String, Object> headers){
+        return headers;
+    }
 }

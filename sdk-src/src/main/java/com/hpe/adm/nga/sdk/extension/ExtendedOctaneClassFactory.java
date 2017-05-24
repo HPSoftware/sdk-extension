@@ -13,12 +13,13 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk;
+package com.hpe.adm.nga.sdk.extension;
 
+import com.hpe.adm.nga.sdk.OctaneClassFactory;
 import com.hpe.adm.nga.sdk.entities.EntityList;
-import com.hpe.adm.nga.sdk.entities.ExtendedEntityList;
+import com.hpe.adm.nga.sdk.extension.entities.ExtendedEntityList;
+import com.hpe.adm.nga.sdk.extension.network.google.InterceptorGoogleHttpClient;
 import com.hpe.adm.nga.sdk.network.OctaneHttpClient;
-import com.hpe.adm.nga.sdk.network.google.InterceptorGoogleHttpClient;
 
 /**
  * Class factory for the extension
@@ -26,7 +27,7 @@ import com.hpe.adm.nga.sdk.network.google.InterceptorGoogleHttpClient;
 public class ExtendedOctaneClassFactory implements OctaneClassFactory {
 
     private static ExtendedOctaneClassFactory instance = new ExtendedOctaneClassFactory();
-    private ExtendedOctaneClassFactory(){};
+    private ExtendedOctaneClassFactory(){}
     public static ExtendedOctaneClassFactory getInstance(){ return instance; }
 
     @Override

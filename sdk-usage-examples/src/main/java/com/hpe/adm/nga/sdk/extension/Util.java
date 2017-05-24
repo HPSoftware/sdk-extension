@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk;
+package com.hpe.adm.nga.sdk.extension;
 
 
 import com.hpe.adm.nga.sdk.model.EntityModel;

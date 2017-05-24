@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk.interceptor;
+package com.hpe.adm.nga.sdk.extension.interceptor;
 
 import com.hpe.adm.nga.sdk.Octane;
 import com.hpe.adm.nga.sdk.OctaneClassFactory;
-import com.hpe.adm.nga.sdk.OctaneConnectionConstants;
 import com.hpe.adm.nga.sdk.authentication.Authentication;
 import com.hpe.adm.nga.sdk.authentication.SimpleUserAuthentication;
+import com.hpe.adm.nga.sdk.extension.OctaneConnectionConstants;
+import com.hpe.adm.nga.sdk.extension.network.RequestInterceptor;
+import com.hpe.adm.nga.sdk.extension.network.ResponseInterceptor;
+import com.hpe.adm.nga.sdk.extension.network.google.InterceptorGoogleHttpClient;
 import com.hpe.adm.nga.sdk.model.EntityModel;
 import com.hpe.adm.nga.sdk.model.StringFieldModel;
-import com.hpe.adm.nga.sdk.network.RequestInterceptor;
-import com.hpe.adm.nga.sdk.network.ResponseInterceptor;
-import com.hpe.adm.nga.sdk.network.google.InterceptorGoogleHttpClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -50,7 +50,7 @@ public class InterceptorExample {
 
         System.getProperties().setProperty(
                 OctaneClassFactory.OCTANE_CLASS_FACTORY_CLASS_NAME,
-                "com.hpe.adm.nga.sdk.ExtendedOctaneClassFactory");
+                "ExtendedOctaneClassFactory");
 
         InterceptorGoogleHttpClient.addRequestInterceptor(new RequestInterceptor() {
             @Override

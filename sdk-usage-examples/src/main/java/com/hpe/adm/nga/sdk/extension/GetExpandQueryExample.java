@@ -13,12 +13,13 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk;
+package com.hpe.adm.nga.sdk.extension;
 
-
+import com.hpe.adm.nga.sdk.Octane;
+import com.hpe.adm.nga.sdk.OctaneClassFactory;
 import com.hpe.adm.nga.sdk.authentication.Authentication;
 import com.hpe.adm.nga.sdk.authentication.SimpleUserAuthentication;
-import com.hpe.adm.nga.sdk.entities.ExtendedGetEntities;
+import com.hpe.adm.nga.sdk.extension.entities.ExtendedGetEntities;
 import com.hpe.adm.nga.sdk.model.EntityModel;
 import com.hpe.adm.nga.sdk.network.google.GoogleHttpClient;
 
@@ -35,7 +36,7 @@ public class GetExpandQueryExample {
 
         System.getProperties().setProperty(
                 OctaneClassFactory.OCTANE_CLASS_FACTORY_CLASS_NAME,
-                "com.hpe.adm.nga.sdk.ExtendedOctaneClassFactory");
+                "ExtendedOctaneClassFactory");
 
         GoogleHttpClient httpClient = new GoogleHttpClient(OctaneConnectionConstants.urlDomain);
         httpClient.authenticate(authentication);

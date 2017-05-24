@@ -13,20 +13,19 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk.network.google;
+package com.hpe.adm.nga.sdk.extension.network.google;
 
 
 import com.google.api.client.http.*;
 import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.http.json.JsonHttpContent;
 import com.google.common.io.CharStreams;
+import com.hpe.adm.nga.sdk.extension.network.RequestInterceptor;
+import com.hpe.adm.nga.sdk.extension.network.ResponseInterceptor;
 import com.hpe.adm.nga.sdk.network.OctaneHttpRequest;
 import com.hpe.adm.nga.sdk.network.OctaneHttpResponse;
-import com.hpe.adm.nga.sdk.network.RequestInterceptor;
-import com.hpe.adm.nga.sdk.network.ResponseInterceptor;
+import com.hpe.adm.nga.sdk.network.google.GoogleHttpClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.nio.charset.Charset;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

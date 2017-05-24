@@ -13,16 +13,22 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk.network;
+package com.hpe.adm.nga.sdk.extension.entities;
 
-import java.util.Map;
+import com.hpe.adm.nga.sdk.entities.GetEntities;
+import com.hpe.adm.nga.sdk.network.OctaneHttpClient;
 
-public interface RequestInterceptor {
-    default String url(String url){
-        return url;
+/**
+ * Created by brucesp on 15-May-17.
+ */
+public class ExtendedGetEntities extends GetEntities {
+
+    protected ExtendedGetEntities(OctaneHttpClient octaneHttpClient, String urlDomain) {
+        super(octaneHttpClient, urlDomain);
     }
-    default String content(String content){ return content; }
-    default Map<String, Object> headers(Map<String, Object> headers){
-        return headers;
+
+    public ExtendedGetEntities expand(String expand){
+        getOctaneUrl().setParam("expand", expand);
+        return this;
     }
 }

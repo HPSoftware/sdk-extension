@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk.network;
+package com.hpe.adm.nga.sdk.extension.entities;
 
-import java.util.Map;
+import com.hpe.adm.nga.sdk.entities.EntityList;
+import com.hpe.adm.nga.sdk.network.OctaneHttpClient;
 
-/**
- * Default implementation, useful if you want to override just one of the methods
- */
-public interface ResponseInterceptor {
-    default String content(String content){
-        return content;
+public final class ExtendedEntityList extends EntityList {
+
+    public ExtendedEntityList(OctaneHttpClient octaneHttpClient, String entityListDomain) {
+        super(octaneHttpClient, entityListDomain);
     }
-    default Map<String, Object> headers(Map<String, Object> headers){
-        return headers;
+
+    public ExtendedGetEntities get() {
+        return new ExtendedGetEntities(octaneHttpClient, urlDomain);
     }
 }

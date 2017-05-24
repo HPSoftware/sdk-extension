@@ -13,14 +13,15 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk.stringquery;
+package com.hpe.adm.nga.sdk.extension.stringquery;
+
 
 import com.hpe.adm.nga.sdk.Octane;
-import com.hpe.adm.nga.sdk.OctaneConnectionConstants;
-import com.hpe.adm.nga.sdk.StringQuery;
-import com.hpe.adm.nga.sdk.Util;
 import com.hpe.adm.nga.sdk.authentication.Authentication;
 import com.hpe.adm.nga.sdk.authentication.SimpleUserAuthentication;
+import com.hpe.adm.nga.sdk.extension.OctaneConnectionConstants;
+import com.hpe.adm.nga.sdk.extension.StringQuery;
+import com.hpe.adm.nga.sdk.extension.Util;
 import com.hpe.adm.nga.sdk.model.EntityModel;
 
 import java.util.Collection;

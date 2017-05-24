@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk.customhttpclient;
+package com.hpe.adm.nga.sdk.extension.customhttpclient;
 
-import com.hpe.adm.nga.sdk.Util;
+import com.hpe.adm.nga.sdk.extension.Util;
 import com.hpe.adm.nga.sdk.authentication.Authentication;
 import com.hpe.adm.nga.sdk.model.EntityModel;
 import com.hpe.adm.nga.sdk.model.StringFieldModel;

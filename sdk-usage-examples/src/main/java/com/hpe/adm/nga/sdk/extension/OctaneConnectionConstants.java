@@ -13,20 +13,20 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk.entities;
-
-import com.hpe.adm.nga.sdk.network.OctaneHttpClient;
+package com.hpe.adm.nga.sdk.extension;
 
 /**
- * Created by brucesp on 15-May-17.
+ * Used to story some basic values that you can change to run the examples
  */
-public class ExtendedGetEntities extends GetEntities {
-    ExtendedGetEntities(OctaneHttpClient octaneHttpClient, String urlDomain) {
-        super(octaneHttpClient, urlDomain);
-    }
+public interface OctaneConnectionConstants {
 
-    public ExtendedGetEntities expand(String expand){
-        getOctaneUrl().setParam("expand", expand);
-        return this;
-    }
+    //Server
+    String urlDomain = "http://myd-vm10632.hpeswlab.net:8081";
+    Long sharedspaceId = 1001L;
+    Long workspaceId = 1002L;
+
+    //Auth
+    String username = "sa@nga";
+    String password = "Welcome1";
+
 }

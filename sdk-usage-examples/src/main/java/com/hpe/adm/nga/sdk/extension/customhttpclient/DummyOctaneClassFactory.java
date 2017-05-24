@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.hpe.adm.nga.sdk.customhttpclient;
+package com.hpe.adm.nga.sdk.extension.customhttpclient;
 
 import com.hpe.adm.nga.sdk.OctaneClassFactory;
 import com.hpe.adm.nga.sdk.entities.EntityList;
