@@ -26,8 +26,8 @@ public class DummyOctaneHttpClientExample {
         //Set custom implementation via system propery
 
         System.getProperties().setProperty(
-                OctaneClassFactory.OCTANE_HTTP_CLIENT_CLASS_NAME,
-                "com.hpe.adm.nga.sdk.customhttpclient.DummyOctaneHttpClient");
+                OctaneClassFactory.OCTANE_CLASS_FACTORY_CLASS_NAME,
+                "com.hpe.adm.nga.sdk.customhttpclient.DummyOctaneClassFactory");
 
         int dummyDefectCount = ThreadLocalRandom.current().nextInt(0, 101);
         //Set the number of dummy entities the custom http client should make
@@ -47,6 +47,6 @@ public class DummyOctaneHttpClientExample {
         assert defects.size() == dummyDefectCount;
 
         //Remove system property
-        System.getProperties().remove(OctaneClassFactory.OCTANE_HTTP_CLIENT_CLASS_NAME);
+        System.getProperties().remove(OctaneClassFactory.OCTANE_CLASS_FACTORY_CLASS_NAME);
     }
 }

@@ -7,7 +7,7 @@
     <groupId>com.hpe.adm.nga.sdk</groupId>
     <artifactId>sdk-private-extension-root</artifactId>
     <packaging>pom</packaging>
-    <version>12.53.20-SNAPSHOT</version>
+    <version>12.53.21-SNAPSHOT</version>
 
     <name>HPE ALM Octane REST API SDK Extensions</name>
     <description>
@@ -16,14 +16,25 @@
     </description>
     <url>https://github.hpe.com/octavian-savencu/sdk-private-extension</url>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <modules>
         <module>sdk-src</module>
         <module>sdk-usage-examples</module>
     </modules>
 
     <properties>
-        <sdk.version>12.53.20-EXT-SNAPSHOT</sdk.version>
+        <sdk.version>12.53.21-SNAPSHOT</sdk.version>
         <junit.version>4.11</junit.version>
+        <compiler.plugin.version>3.6.1</compiler.plugin.version>
+        <compiler.source.version>1.8</compiler.source.version>
+        <compiler.target.version>1.8</compiler.target.version>
     </properties>
 	
     <dependencies>
@@ -45,10 +56,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${compiler.source.version}</source>
+                    <target>${compiler.target.version}</target>
                 </configuration>
             </plugin>
         </plugins>

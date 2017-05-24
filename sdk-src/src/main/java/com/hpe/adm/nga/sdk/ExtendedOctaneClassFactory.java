@@ -6,9 +6,14 @@ import com.hpe.adm.nga.sdk.network.OctaneHttpClient;
 import com.hpe.adm.nga.sdk.network.google.InterceptorGoogleHttpClient;
 
 /**
- * Created by brucesp on 15-May-17.
+ * Class factory for the extension
  */
 public class ExtendedOctaneClassFactory implements OctaneClassFactory {
+
+    private static ExtendedOctaneClassFactory instance = new ExtendedOctaneClassFactory();
+    private ExtendedOctaneClassFactory(){};
+    public static ExtendedOctaneClassFactory getInstance(){ return instance; }
+
     @Override
     public OctaneHttpClient getOctaneHttpClient(String urlDomain) {
         return new InterceptorGoogleHttpClient(urlDomain);

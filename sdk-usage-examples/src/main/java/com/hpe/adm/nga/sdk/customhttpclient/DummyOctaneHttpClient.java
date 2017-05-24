@@ -14,6 +14,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * Dummy implementation of {@link OctaneHttpClient} for the {@link DummyOctaneHttpClientExample}
+ */
 public class DummyOctaneHttpClient implements OctaneHttpClient {
 
     /**

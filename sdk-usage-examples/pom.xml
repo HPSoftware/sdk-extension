@@ -6,7 +6,7 @@
 	<parent>
         <artifactId>sdk-private-extension-root</artifactId>
         <groupId>com.hpe.adm.nga.sdk</groupId>
-        <version>12.53.20-SNAPSHOT</version>
+        <version>12.53.21-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -16,7 +16,7 @@
         <dependency>
             <groupId>com.hpe.adm.nga.sdk</groupId>
             <artifactId>sdk-private-extension-src</artifactId>
-            <version>12.53.20-SNAPSHOT</version>
+            <version>12.53.21-SNAPSHOT</version>
         </dependency>
     </dependencies>
 	
