@@ -20,7 +20,7 @@
     
 	<parent>
         <artifactId>sdk-extension-root</artifactId>
-        <groupId>com.hpe.adm.nga.sdk</groupId>
+        <groupId>com.hpe.adm.nga.sdk.extension</groupId>
         <version>12.53.21-SNAPSHOT</version>
     </parent>
 
