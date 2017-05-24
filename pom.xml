@@ -45,6 +45,8 @@
     </modules>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <sdk.version>12.53.21-SNAPSHOT</sdk.version>
         <junit.version>4.11</junit.version>
         <compiler.plugin.version>3.6.1</compiler.plugin.version>
