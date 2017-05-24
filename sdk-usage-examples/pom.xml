@@ -19,18 +19,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     
 	<parent>
-        <artifactId>sdk-private-extension-root</artifactId>
+        <artifactId>sdk-extension-root</artifactId>
         <groupId>com.hpe.adm.nga.sdk</groupId>
         <version>12.53.21-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>sdk-private-extension-usage-examples</artifactId>
+    <artifactId>sdk-extension-usage-examples</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.hpe.adm.nga.sdk</groupId>
-            <artifactId>sdk-private-extension-src</artifactId>
+            <artifactId>sdk-extension-src</artifactId>
             <version>12.53.21-SNAPSHOT</version>
         </dependency>
     </dependencies>

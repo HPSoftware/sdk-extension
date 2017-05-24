@@ -20,11 +20,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.hpe.adm.nga.sdk</groupId>
-    <artifactId>sdk-private-extension-root</artifactId>
+    <artifactId>sdk-extension-root</artifactId>
     <packaging>pom</packaging>
     <version>12.53.21-SNAPSHOT</version>
 
-    <name>HPE ALM Octane REST API SDK Extensions</name>
+    <name>HPE ALM Octane REST API SDK Extension</name>
     <description>
         Extension of ALM Octane Java REST SDK (https://github.com/HPSoftware/ALMOctaneJavaRESTSDK),
         can be used for more advanced use cases.

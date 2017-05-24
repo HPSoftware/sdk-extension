@@ -1,2 +1,2 @@
 # sdk-private-extension
-Private extension for ALMOctaneJavaRESTSDK
+Extension of ALMOctaneJavaRESTSDK
