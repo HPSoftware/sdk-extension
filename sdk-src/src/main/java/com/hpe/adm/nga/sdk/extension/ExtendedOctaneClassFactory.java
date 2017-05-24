@@ -21,18 +21,35 @@ import com.hpe.adm.nga.sdk.extension.entities.ExtendedEntityList;
 import com.hpe.adm.nga.sdk.extension.network.google.InterceptorGoogleHttpClient;
 import com.hpe.adm.nga.sdk.network.OctaneHttpClient;
 
+import java.net.Proxy;
+
 /**
  * Class factory for the extension
  */
 public class ExtendedOctaneClassFactory implements OctaneClassFactory {
 
+    private static Proxy httpProxy;
     private static ExtendedOctaneClassFactory instance = new ExtendedOctaneClassFactory();
+
     private ExtendedOctaneClassFactory(){}
     public static ExtendedOctaneClassFactory getInstance(){ return instance; }
 
+    /**
+     * Set the http proxy for all {@link OctaneHttpClient} created by this factory.
+     * This does not affect exiting http clients in exiting instances of {@link com.hpe.adm.nga.sdk.Octane}
+     * @param httpProxy
+     */
+    public static void setHttpClientProxy(Proxy httpProxy){
+        ExtendedOctaneClassFactory.httpProxy = httpProxy;
+    }
+
     @Override
     public OctaneHttpClient getOctaneHttpClient(String urlDomain) {
-        return new InterceptorGoogleHttpClient(urlDomain);
+        InterceptorGoogleHttpClient httpClient = new InterceptorGoogleHttpClient(urlDomain);
+        if(httpProxy != null){
+            httpClient.setHttpProxy(httpProxy);
+        }
+        return httpClient;
     }
 
     @Override
