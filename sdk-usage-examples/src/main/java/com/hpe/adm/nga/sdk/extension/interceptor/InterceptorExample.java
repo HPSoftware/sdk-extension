@@ -50,30 +50,37 @@ public class InterceptorExample {
                 OctaneConnectionConstants.password);
 
         InterceptorGoogleHttpClient.addRequestInterceptor(new RequestInterceptor() {
+
             @Override
             public String url(String url) {
                 String newUrl = url.replace("work_items","defects");
-                logger.info("Intercepting url: {} ->  {}", url, newUrl);
+                logger.info("Intercepting request url: {} ->  {}", url, newUrl);
                 return newUrl;
             }
+
             @Override
             public String content(String content) {
-                logger.info("Intercepting content: {} ->  {}", content, content);
+                logger.info("Intercepting request content: {}", content);
                 return content;
             }
 
             @Override
             public Map<String, Object> headers( Map<String, Object> headers) {
-                logger.info("Intercepting headers: (printing)");
+                logger.info("Intercepting request headers: (printing)");
+                headers.put("DUMMY", "HEADER");
                 headers.forEach((key, value) -> logger.info(key +": " + value));
                 return headers;
             }
-
-            //TODO: headers
         });
 
-        //TODO: not working
         InterceptorGoogleHttpClient.addResponseInterceptor(new ResponseInterceptor() {
+            @Override
+            public Map<String, Object> headers( Map<String, Object> headers) {
+                logger.info("Intercepting response headers: (printing)");
+                headers.put("DUMMY", "HEADER");
+                headers.forEach((key, value) -> logger.info(key +": " + value));
+                return headers;
+            }
         });
 
         Octane octane =
@@ -83,10 +90,10 @@ public class InterceptorExample {
                         .workSpace(OctaneConnectionConstants.workspaceId)
                         .build();
 
-        //Fetch defects as an example a print them to the console
+        //Fetch defects as an example, and update one of them
         Collection<EntityModel> entities = octane.entityList("work_items").get().addFields("name").execute();
 
-        if(entities.size()<1) return;
+        if(entities.size() < 1) return;
 
         EntityModel entityModel = entities.iterator().next();
 

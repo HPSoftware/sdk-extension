@@ -66,6 +66,7 @@ public class InterceptorGoogleHttpClient extends GoogleHttpClient {
     }
 
     private static void applyRequestInterceptor(RequestInterceptor requestInterceptor, HttpRequest httpRequest){
+        logger.debug("Applying responseInterceptor " + (responseInterceptors.indexOf(requestInterceptor) + 1) + " of " + responseInterceptors.size());
 
         //URL
         String newUrl = requestInterceptor.url(httpRequest.getUrl().toString());
@@ -89,14 +90,19 @@ public class InterceptorGoogleHttpClient extends GoogleHttpClient {
         final Map<String, Object> oldHeaders = new HashMap<>();
         httpRequest.getHeaders().forEach( (key, value) -> oldHeaders.put(key, value));
         final Map<String, Object> newHeaders = requestInterceptor.headers(oldHeaders);
+        httpRequest.getHeaders().clear();
         newHeaders.forEach((key, value) -> httpRequest.getHeaders().set(key, value));
-
-        logger.debug("Applying requestInterceptor " + (requestInterceptors.indexOf(requestInterceptor) + 1) + " of " + requestInterceptors.size());
     }
 
     private static void applyResponseInterceptor(ResponseInterceptor responseInterceptor, HttpResponse httpResponse){
-        //TODO, implement this thing
         logger.debug("Applying responseInterceptor " + (responseInterceptors.indexOf(responseInterceptor) + 1) + " of " + responseInterceptors.size());
+
+        //HEADERS
+        final Map<String, Object> oldHeaders = new HashMap<>();
+        httpResponse.getHeaders().forEach( (key, value) -> oldHeaders.put(key, value));
+        final Map<String, Object> newHeaders = responseInterceptor.headers(oldHeaders);
+        httpResponse.getHeaders().clear();
+        newHeaders.forEach((key, value) -> httpResponse.getHeaders().set(key, value));
     }
 
     public static boolean addRequestInterceptor(RequestInterceptor requestInterceptor) {
