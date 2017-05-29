@@ -21,7 +21,7 @@ import com.hpe.adm.nga.sdk.authentication.SimpleUserAuthentication;
 import com.hpe.adm.nga.sdk.extension.entities.ExtendedGetEntities;
 import com.hpe.adm.nga.sdk.model.EntityModel;
 
-import java.util.Collection;
+import java.util.*;
 
 public class GetExpandQueryExample {
 
@@ -40,7 +40,15 @@ public class GetExpandQueryExample {
                         .sharedSpace(OctaneConnectionConstants.sharedspaceId)
                         .workSpace(OctaneConnectionConstants.workspaceId).build();
 
-        final Collection<EntityModel> defects = ((ExtendedGetEntities) octane.entityList("defects").get()).expand("fields=\"author\"").execute();
+
+        Map<String, Set<String>> expandMap = new HashMap<>();
+        expandMap.put("fields", new HashSet<String>());
+        expandMap.get("fields").add("author");
+
+        final Collection<EntityModel> defects =
+                ((ExtendedGetEntities) octane.entityList("defects").get())
+                        .expand(expandMap)
+                        .execute();
 
         System.out.println(defects.size());
     }
