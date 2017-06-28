@@ -183,7 +183,6 @@
                     <id>snapshot-repository</id>
                     <name>Maven2 Snapshot Repository</name>
                     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                    <uniqueVersion>false</uniqueVersion>
                 </snapshotRepository>
             </distributionManagement>
         </profile>
@@ -213,7 +212,6 @@
                 <snapshotRepository>
                     <id>nexus</id>
                     <url>${nexus.snapshots.url}</url>
-                    <uniqueVersion>false</uniqueVersion>
                 </snapshotRepository>
             </distributionManagement>
 
