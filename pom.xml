@@ -213,7 +213,7 @@
                 <snapshotRepository>
                     <id>nexus</id>
                     <url>${nexus.snapshots.url}</url>
-                    <uniqueVersion>true</uniqueVersion>
+                    <uniqueVersion>false</uniqueVersion>
                 </snapshotRepository>
             </distributionManagement>
 
