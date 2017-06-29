@@ -65,7 +65,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <sdk.version>12.55.3</sdk.version>
+        <sdk.version>12.55.3-SNAPSHOT</sdk.version>
         <junit.version>4.11</junit.version>
         <maven-compiler.version>3.6.1</maven-compiler.version>
         <java.source.version>1.8</java.source.version>
