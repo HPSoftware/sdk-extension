@@ -178,35 +178,6 @@
             </distributionManagement>
         </profile>
 
-        <!-- For internal deployment only -->
-        <profile>
-            <id>release-internal</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>${nexus-staging-maven-plugin.version}</version>
-                        <configuration>
-                            <serverId>nexus</serverId>
-                            <nexusUrl>${nexus.url}</nexusUrl>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-
-            <distributionManagement>
-                <repository>
-                    <id>nexus</id>
-                    <url>${nexus.repo.url}</url>
-                </repository>
-                <snapshotRepository>
-                    <id>nexus</id>
-                    <url>${nexus.snapshots.url}</url>
-                </snapshotRepository>
-            </distributionManagement>
-
-        </profile>
     </profiles>
 
 </project>
