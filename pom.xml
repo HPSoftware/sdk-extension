@@ -29,7 +29,7 @@
         Extension of ALM Octane Java REST SDK (https://github.com/HPSoftware/ALMOctaneJavaRESTSDK),
         can be used for more advanced use cases.
     </description>
-    <url>https://github.hpe.com/octavian-savencu/sdk-private-extension</url>
+    <url>https://github.com/HPSoftware/sdk-extension</url>
 
     <licenses>
         <license>
@@ -43,6 +43,12 @@
         <name>Hewlett Packard Enterprise</name>
         <url>http://www.hpe.com</url>
     </organization>
+
+    <scm>
+        <url>https://github.com/HPSoftware/sdk-extension.git</url>
+        <connection>scm:git:https://github.com/HPSoftware/sdk-extension.git</connection>
+        <developerConnection>scm:git:ssh://github.com:HPSoftware/sdk-extension.git</developerConnection>
+    </scm>
 
     <developers>
         <developer>
