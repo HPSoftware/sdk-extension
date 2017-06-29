@@ -22,7 +22,7 @@
     <groupId>com.hpe.adm.nga.sdk.extension</groupId>
     <artifactId>sdk-extension-root</artifactId>
     <packaging>pom</packaging>
-    <version>12.55.3-SNAPSHOT</version>
+    <version>12.55.3</version>
 
     <name>HPE ALM Octane REST API SDK Extension</name>
     <description>
@@ -39,6 +39,24 @@
         </license>
     </licenses>
 
+    <organization>
+        <name>Hewlett Packard Enterprise</name>
+        <url>http://www.hpe.com</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>Andras Toth</name>
+            <email>atoth@hpe.com</email>
+            <organization>HPE</organization>
+        </developer>
+        <developer>
+            <name>Octavian Savencu</name>
+            <email>osavencu@hpe.com</email>
+            <organization>HPE</organization>
+        </developer>
+    </developers>
+
     <modules>
         <module>sdk-src</module>
         <module>sdk-usage-examples</module>
@@ -47,7 +65,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <sdk.version>12.55.3-SNAPSHOT</sdk.version>
+        <sdk.version>12.55.3</sdk.version>
         <junit.version>4.11</junit.version>
         <maven-compiler.version>3.6.1</maven-compiler.version>
         <java.source.version>1.8</java.source.version>
