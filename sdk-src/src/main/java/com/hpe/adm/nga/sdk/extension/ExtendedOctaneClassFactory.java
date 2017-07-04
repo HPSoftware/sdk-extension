@@ -17,6 +17,7 @@ package com.hpe.adm.nga.sdk.extension;
 
 import com.hpe.adm.nga.sdk.OctaneClassFactory;
 import com.hpe.adm.nga.sdk.entities.EntityList;
+import com.hpe.adm.nga.sdk.entities.TypedEntityList;
 import com.hpe.adm.nga.sdk.extension.entities.ExtendedEntityList;
 import com.hpe.adm.nga.sdk.extension.network.google.InterceptorGoogleHttpClient;
 import com.hpe.adm.nga.sdk.network.OctaneHttpClient;
@@ -55,5 +56,10 @@ public class ExtendedOctaneClassFactory implements OctaneClassFactory {
     @Override
     public EntityList getEntityList(OctaneHttpClient octaneHttpClient, String baseDomain, String entityName) {
         return new ExtendedEntityList(octaneHttpClient, baseDomain + entityName);
+    }
+
+    @Override
+    public <T extends TypedEntityList> T getEntityList(OctaneHttpClient octaneHttpClient, String baseDomain, Class<T> enityListClass) {
+        return null;
     }
 }
