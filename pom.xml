@@ -22,14 +22,14 @@
     <groupId>com.hpe.adm.nga.sdk.extension</groupId>
     <artifactId>sdk-extension-root</artifactId>
     <packaging>pom</packaging>
-    <version>12.55.3-SNAPSHOT</version>
+    <version>12.55.4</version>
 
     <name>HPE ALM Octane REST API SDK Extension</name>
     <description>
         Extension of ALM Octane Java REST SDK (https://github.com/HPSoftware/ALMOctaneJavaRESTSDK),
         can be used for more advanced use cases.
     </description>
-    <url>https://github.hpe.com/octavian-savencu/sdk-private-extension</url>
+    <url>https://github.com/HPSoftware/sdk-extension</url>
 
     <licenses>
         <license>
@@ -39,6 +39,30 @@
         </license>
     </licenses>
 
+    <organization>
+        <name>Hewlett Packard Enterprise</name>
+        <url>http://www.hpe.com</url>
+    </organization>
+
+    <scm>
+        <url>https://github.com/HPSoftware/sdk-extension.git</url>
+        <connection>scm:git:https://github.com/HPSoftware/sdk-extension.git</connection>
+        <developerConnection>scm:git:ssh://github.com:HPSoftware/sdk-extension.git</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Andras Toth</name>
+            <email>atoth@hpe.com</email>
+            <organization>HPE</organization>
+        </developer>
+        <developer>
+            <name>Octavian Savencu</name>
+            <email>osavencu@hpe.com</email>
+            <organization>HPE</organization>
+        </developer>
+    </developers>
+
     <modules>
         <module>sdk-src</module>
         <module>sdk-usage-examples</module>
@@ -47,16 +71,17 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <sdk.version>12.55.3-SNAPSHOT</sdk.version>
+        <sdk.version>12.55.4</sdk.version>
         <junit.version>4.11</junit.version>
         <maven-compiler.version>3.6.1</maven-compiler.version>
         <java.source.version>1.8</java.source.version>
         <java.target.version>1.8</java.target.version>
 
-        <nexus-staging-maven-plugin.version>1.6.7</nexus-staging-maven-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
         <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
         <maven-surefire.version>2.19.1</maven-surefire.version>
+        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
     </properties>
 
     <dependencies>
@@ -74,84 +99,64 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler.version}</version>
-                    <configuration>
-                        <source>${java.source.version}</source>
-                        <target>${java.target.version}</target>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${maven-javadoc-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler.version}</version>
+                <configuration>
+                    <source>${java.source.version}</source>
+                    <target>${java.target.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>
         <profile>
             <id>build-deployment</id>
             <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-javadoc-plugin</artifactId>
-                            <version>${maven-javadoc-plugin.version}</version>
-                            <executions>
-                                <execution>
-                                    <id>attach-javadocs</id>
-                                    <goals>
-                                        <goal>jar</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-source-plugin</artifactId>
-                            <version>${maven-source-plugin.version}</version>
-                            <executions>
-                                <execution>
-                                    <id>attach-sources</id>
-                                    <goals>
-                                        <goal>jar</goal>
-                                        <goal>test-jar</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-gpg-plugin</artifactId>
-                            <version>${maven-gpg-plugin.version}</version>
-                            <executions>
-                                <execution>
-                                    <id>sign-artifacts</id>
-                                    <phase>verify</phase>
-                                    <goals>
-                                        <goal>sign</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${maven-javadoc-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                    <goal>test-jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
@@ -183,40 +188,8 @@
                     <id>snapshot-repository</id>
                     <name>Maven2 Snapshot Repository</name>
                     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                    <uniqueVersion>false</uniqueVersion>
                 </snapshotRepository>
             </distributionManagement>
-        </profile>
-
-        <!-- For internal deployment only -->
-        <profile>
-            <id>release-internal</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>${nexus-staging-maven-plugin.version}</version>
-                        <configuration>
-                            <serverId>nexus</serverId>
-                            <nexusUrl>${nexus.url}</nexusUrl>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-
-            <distributionManagement>
-                <repository>
-                    <id>nexus</id>
-                    <url>${nexus.repo.url}</url>
-                </repository>
-                <snapshotRepository>
-                    <id>nexus</id>
-                    <url>${nexus.snapshots.url}</url>
-                    <uniqueVersion>true</uniqueVersion>
-                </snapshotRepository>
-            </distributionManagement>
-
         </profile>
     </profiles>
 

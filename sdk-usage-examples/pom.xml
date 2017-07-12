@@ -21,7 +21,7 @@
 	<parent>
         <groupId>com.hpe.adm.nga.sdk.extension</groupId>
         <artifactId>sdk-extension-root</artifactId>
-        <version>12.55.3-SNAPSHOT</version>
+        <version>12.55.4</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -31,7 +31,7 @@
         <dependency>
             <groupId>com.hpe.adm.nga.sdk.extension</groupId>
             <artifactId>sdk-extension-src</artifactId>
-            <version>12.55.3-SNAPSHOT</version>
+            <version>${sdk.version}</version>
         </dependency>
     </dependencies>
 	
