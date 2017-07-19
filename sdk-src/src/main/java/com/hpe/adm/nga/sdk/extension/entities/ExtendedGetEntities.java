@@ -15,7 +15,7 @@
 
 package com.hpe.adm.nga.sdk.extension.entities;
 
-import com.hpe.adm.nga.sdk.entities.GetEntities;
+import com.hpe.adm.nga.sdk.entities.get.GetEntities;
 import com.hpe.adm.nga.sdk.network.OctaneHttpClient;
 
 import java.util.Map;
@@ -48,7 +48,7 @@ public class ExtendedGetEntities extends GetEntities {
                     return relationFieldName + "{" + relationFieldExpandValue +"}";
                 }).collect(Collectors.joining(","));
 
-        getOctaneUrl().setParam("expand", expandQueryString);
+        octaneRequest.getOctaneUrl().setParam("expand", expandQueryString);
 
         return this;
     }
