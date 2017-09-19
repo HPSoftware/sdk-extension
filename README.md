@@ -2,4 +2,4 @@
 Extension of ALMOctaneJavaRESTSDK
 
 ## DISCONTINUED
-Code moved, now be part of the man [SDK](https://github.com/HPSoftware/ALMOctaneJavaRESTSDK)
+Code moved, now be part of the main [SDK](https://github.com/HPSoftware/ALMOctaneJavaRESTSDK)
